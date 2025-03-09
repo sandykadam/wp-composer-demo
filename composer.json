@@ -1,0 +1,49 @@
+{
+    "name": "sandeep/wp-composer-demo",
+    "description": "WordPress setup with composer demo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Sandeep Kadam",
+            "email": "contact@sandykadam.com"
+        }
+    ],
+    "require": {
+        "johnpbloch/wordpress": "^6.7",
+        "wpackagist-plugin/wordpress-seo": "24.6",
+        "wpackagist-theme/zakra": "^4.1"
+    },
+    "config": {
+      "sort-packages": true,
+      "optimize-autoloader": true,
+      "allow-plugins": {
+          "johnpbloch/wordpress-core-installer": true,
+          "composer/installers": true
+      }
+    },
+    "extra": {
+        "wordpress-install-dir": "dist",
+        "installer-paths": {
+           "dist/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+           "dist/wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
+    },
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://wpackagist.org"
+      }
+    ],
+    "scripts": {
+      "post-install-cmd": [
+        "rsync -av custom-plugins/simple-weather/ dist/wp-content/plugins/simple-weather/"
+      ],
+      "post-update-cmd": [
+        "rsync -av custom-plugins/simple-weather/ dist/wp-content/plugins/simple-weather/"
+      ]
+    }
+}

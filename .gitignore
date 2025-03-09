@@ -1,0 +1,24 @@
+
+# Exclude composer dependencies in the vendor directory
+/vendor
+
+# Exclude dist core
+/dist/*
+/dist/wp-includes/
+/dist/wp-admin/
+
+# Include wp-content, then exclude each of the subdirectories
+!/dist/wp-content
+/dist/wp-content/*
+
+## Themes: include the directory, exclude all subdirectories except those specified
+!/dist/wp-content/themes/
+/dist/wp-content/themes/*
+!/dist/wp-content/themes/your-theme-name
+# Include custom themes here
+
+## Plugins: include the directory, exclude all subdirectories except those specified
+!/dist/wp-content/plugins/
+/dist/wp-content/plugins/*
+# Include custom plugins here
+!/custom-plugins/simple-weather
